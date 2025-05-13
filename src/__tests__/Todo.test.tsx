@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-function Todo({ items }: { items: string[] }) {
+function todo({ items }: { items: string[] }) {
   return (
     <ul>
       {items.map(item => (
