@@ -1,2 +1,2 @@
 npm run test:ci
-npm run lint
+npm exec lint-staged
