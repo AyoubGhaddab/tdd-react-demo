@@ -9,14 +9,18 @@ export function Todo({ items }: { items: TodoItem[] }) {
   const onItemAdded = (item: TodoItem) => {
     setTodos(prev => [...prev, item]);
   };
+  const markItemAsDone = (item: TodoItem) => {
+    const filtred = todos.filter(todo => todo.id !== item.id);
+    setTodos(filtred);
+  };
   return (
     <div>
       <TodoInput onItemAdded={onItemAdded} />
-      <ul>
-        {todos.map(item => (
-          <li key={item.id}>{item.content}</li>
-        ))}
-      </ul>
+
+      {todos.map((item: TodoItem) => (
+        <span onClick={() => markItemAsDone(item)} key={item.id}>{item.content}</span>
+      ))}
+
     </div>
   );
 }

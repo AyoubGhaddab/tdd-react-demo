@@ -29,4 +29,14 @@ describe("buy some milk app", () => {
 
     expect(screen.getByText("Buy some oranges")).toBeInTheDocument();
   });
+
+  it("should mark a todo item as done", () => {
+    const todos = [
+      { id: "1", content: "Buy some milk" },
+    ];
+    render(<Todo items={todos} />);
+    const todoItem = screen.getByText("Buy some milk");
+    fireEvent.click(todoItem);
+    expect(screen.queryByText("Buy some milk")).not.toBeInTheDocument();
+  });
 });
