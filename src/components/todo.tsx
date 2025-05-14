@@ -9,9 +9,7 @@ export function Todo({ items }: { items: TodoItem[] }) {
   return (
     <div>
       <TodoInput onItemAdded={addTodoItem} />
-
       <TodoList todos={todos} markItemAsDone={markItemAsDone} />
-
     </div>
   );
 }
