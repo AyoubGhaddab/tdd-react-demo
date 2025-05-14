@@ -4,7 +4,6 @@ import "@testing-library/jest-dom";
 import { Todo } from "../components/todo";
 
 describe("buy some milk app", () => {
-  // 5. mark item as done
   it("should render a todo item", () => {
     const todos = [
       { id: "1", content: "Buy some milk" },
@@ -12,6 +11,7 @@ describe("buy some milk app", () => {
     render(<Todo items={todos} />);
     expect(screen.getByText("Buy some milk")).toBeInTheDocument();
   });
+
   it("should render multiple todo items", () => {
     const todos = [
       { id: "1", content: "Buy some milk" },
@@ -21,6 +21,7 @@ describe("buy some milk app", () => {
     expect(screen.getByText("Buy some milk")).toBeInTheDocument();
     expect(screen.getByText("Buy some eggs")).toBeInTheDocument();
   });
+
   it("should add a todo item", () => {
     render(<Todo items={[]} />);
     const input = screen.getByTestId("input");
