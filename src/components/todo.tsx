@@ -1,26 +1,15 @@
-import { useState } from "react";
-
 import type { TodoItem } from "../types/todo";
 
+import { useTodo } from "../hooks/use-todo";
 import TodoInput from "./todo-input";
+import { TodoList } from "./todo-list";
 
 export function Todo({ items }: { items: TodoItem[] }) {
-  const [todos, setTodos] = useState<TodoItem[]>(items);
-  const onItemAdded = (item: TodoItem) => {
-    setTodos(prev => [...prev, item]);
-  };
-  const markItemAsDone = (item: TodoItem) => {
-    const filtred = todos.filter(todo => todo.id !== item.id);
-    setTodos(filtred);
-  };
+  const { todos, addTodoItem, markItemAsDone } = useTodo(items);
   return (
     <div>
-      <TodoInput onItemAdded={onItemAdded} />
-
-      {todos.map((item: TodoItem) => (
-        <span onClick={() => markItemAsDone(item)} key={item.id}>{item.content}</span>
-      ))}
-
+      <TodoInput onItemAdded={addTodoItem} />
+      <TodoList todos={todos} markItemAsDone={markItemAsDone} />
     </div>
   );
 }
